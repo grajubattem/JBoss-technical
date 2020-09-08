@@ -1,0 +1,31 @@
+import com.sample.Account;
+
+dialect "java"
+ 
+rule "nameRequired"
+salience 100
+
+   no-loop true
+   ruleflow-group "helloworldgroup"
+       	when 
+	    $account : Account( money <= 0 )
+        then
+        //$account.setMoney(200);
+        System.out.println( "Account needs to have some money in it!success   1111");
+    
+end
+
+dialect "java" 
+rule "nameRequired2"
+salience 1000
+
+   no-loop true
+   ruleflow-group "helloworldgroup"
+       	when 
+	    $account : Account( money <= 0 )
+        then
+        //$account.setMoney(200);
+        update($account);
+        System.out.println( "Account needs to have some money in it!success  22222");
+    
+end
